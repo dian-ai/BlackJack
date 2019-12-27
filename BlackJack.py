@@ -95,4 +95,20 @@ class Chips:
         self.balance -= self.bet
 
 
-# def take_bet():
+def take_bet(chips):
+
+    while True:
+        try:
+            chips.bet = int(input('How much do you like to bet? '))
+        except ValueError:
+            print('Your value should be an integer')
+        else:
+            if chips.bet > chips.balance:
+                print('Sorry, your bet is more than your balance', chips.total)
+            else:
+                break
+
+
+def hit(deck, hand):
+    hand.add_card(deck.deal())
+    hand.adjust_for_ace()
